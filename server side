@@ -1,0 +1,29 @@
+import java.net.*;
+import java.util.*;
+import java.io.*;
+public class server {
+	public static void main(String args[]) {
+	String Str1=" ";
+      try {
+        ServerSocket ss = new ServerSocket(1234);
+        Socket s = ss.accept();
+
+        DataInputStream di= new DataInputStream(s.getInputStream());
+
+
+        Scanner input = new Scanner(System.in);
+        DataOutputStream di2 = new DataOutputStream(s.getOutputStream());
+
+        while(Str1!="stop"){
+        String str = di.readUTF();
+        System.out.println(str);
+        Str1 = input.nextLine();
+        di2.writeUTF(Str1);
+	}
+}
+	catch(Exception e) {
+		System.out.println("Something going wrong!!");	
+		}
+	
+}
+}

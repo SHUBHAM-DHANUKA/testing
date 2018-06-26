@@ -1,0 +1,28 @@
+import java.net.*;
+import java.util.*;
+import java.io.*;
+class Client {
+	public static void main(String args[]) {
+	String str1=" ";
+         try {
+		Socket s =new Socket("localhost",1234);
+
+                Scanner input = new Scanner(System.in);
+		
+                DataOutputStream pw = new DataOutputStream(s.getOutputStream());
+		DataInputStream di = new DataInputStream(s.getInputStream());
+
+                while(str1!="stop"){
+                String  str = input.nextLine();
+                pw.writeUTF(str);
+                
+                str1= di.readUTF();
+                System.out.println(str1);	
+	  }
+}
+		catch(Exception e) {
+		System.out.println("Something going wrong!!");	
+		}
+		}
+
+}
